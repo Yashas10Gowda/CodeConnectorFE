@@ -62,7 +62,7 @@
 
 <style>
   h1.display-3 {
-    margin-top: 5%;
+    margin-top: 10%;
   }
   .btn-info {
     font-size: 20px;
@@ -89,7 +89,7 @@
   .jumbotron {
     background-image: linear-gradient(
         to right,
-        rgba(52, 58, 64, 0.8),
+        rgba(52, 58, 64, 0.2),
         rgba(52, 58, 64, 0.9)
       ),
       url("/ccpic1.jpg");
@@ -118,7 +118,14 @@
     }
     .jumbotron {
       padding-bottom: 100%;
-      background-image: none;
+      background-image: linear-gradient(
+          to right,
+          rgba(52, 58, 64, 0.3),
+          rgba(52, 58, 64, 0.9)
+        ),
+        url("/ccpic1.jpg");
+      height: 90vh;
+      background-position: 40% 75%;
     }
   }
 </style>
@@ -134,7 +141,7 @@
 <Nav />
 
 {#if username == null}
-  <div class="jumbotron bg-dark text-info text-center rounded-0">
+  <div class="jumbotron bg-dark text-light text-center rounded-0">
     <h1 class="display-3">Code Connector</h1>
     <p class="lead">
       Create a developer profile/portfolio, share posts and get help from other
@@ -150,14 +157,10 @@
       </a>
     </p>
     <hr class="mt-3 bg-info" />
-    <p>
-      Are you a developer or someone who's aspiring to be a developer? Then you
-      exactly know what to do with these two buttons! ;)
-    </p>
-    <a class="btn btn-outline-info mt-3 px-2" href="/register" role="button">
+    <a class="btn btn-outline-light mt-3 px-2" href="/register" role="button">
       Register
     </a>
-    <a class="btn btn-outline-info mt-3 px-3" href="/login" role="button">
+    <a class="btn btn-outline-light mt-3 px-3" href="/login" role="button">
       Login
     </a>
   </div>
