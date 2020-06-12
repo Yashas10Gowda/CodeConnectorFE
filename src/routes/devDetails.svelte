@@ -56,10 +56,10 @@
 
   <div class="card-body text-center">
     <img
-      style="width:25%;"
-      src={devobj.avatarurl}
+      style="max-width:300px;"
+      src={devobj.avatarurl ? devobj.avatarurl : 'profile-icon.png'}
       class="rounded-circle mb-4"
-      alt="..." />
+      alt="" />
     <div class="usr text-center">{devobj.username.toUpperCase()}</div>
     <div class="car text-center">{devobj.career}</div>
     <div class="text-center mt-4">{devobj.location}</div>

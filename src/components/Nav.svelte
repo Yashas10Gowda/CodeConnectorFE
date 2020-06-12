@@ -45,6 +45,13 @@
     .navbar-nav {
       margin-left: 68%;
     }
+    .navbar-brand {
+      color: #17a2b8;
+    }
+    .code-icon {
+      filter: invert(51%) sepia(39%) saturate(875%) hue-rotate(140deg)
+        brightness(95%) contrast(94%);
+    }
   }
 </style>
 

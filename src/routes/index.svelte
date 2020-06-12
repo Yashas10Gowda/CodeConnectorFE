@@ -101,6 +101,7 @@
   }
   @media (max-width: 750px) {
     .display-3 {
+      margin-top: 25% !important;
       margin-bottom: 10%;
       font-size: 40px;
     }
@@ -115,17 +116,6 @@
     }
     .content {
       margin: 20px;
-    }
-    .jumbotron {
-      padding-bottom: 100%;
-      background-image: linear-gradient(
-          to right,
-          rgba(52, 58, 64, 0.3),
-          rgba(52, 58, 64, 0.9)
-        ),
-        url("/ccpic1.jpg");
-      height: 90vh;
-      background-position: 40% 75%;
     }
   }
 </style>
@@ -156,7 +146,7 @@
         Yashas Gowda
       </a>
     </p>
-    <hr class="mt-3 bg-info" />
+    <hr class="mt-3 bg-light" />
     <a class="btn btn-outline-light mt-3 px-2" href="/register" role="button">
       Register
     </a>
