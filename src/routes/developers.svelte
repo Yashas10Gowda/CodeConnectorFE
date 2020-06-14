@@ -5,24 +5,21 @@
   let devs = [];
   let devnames = [];
 
-  onMount(() => {
-    fetch("https://yashas.pythonanywhere.com/api/developers/")
-      .then(res => res.json())
-      .then(data => {
-        data.forEach(da => {
-          if (da.github) {
-            fetch(`https://api.github.com/users/${da.github}`)
-              .then(res => res.json())
-              .then(gd => (da.avatarurl = gd.avatar_url));
-          }
-        });
-        devs = data;
-        window.setTimeout(() => (devs = data), 500);
-        window.setTimeout(() => (devs = data), 1000);
-        window.setTimeout(() => (devs = data), 2000);
-        window.setTimeout(() => (devs = data), 5000);
-        window.setTimeout(() => (devs = data), 10000);
-      });
+  async function gitfun(x) {
+    if (x.github == null) {
+      x.avatarurl = "profile-icon.png";
+      return "profile-icon.png";
+    }
+    let res = await fetch(`https://api.github.com/users/${x.github}`);
+    let resj = await res.json();
+    x.avatarurl = resj.avatar_url;
+    return res.ok ? resj.avatar_url : "profile-icon.png";
+  }
+
+  onMount(async () => {
+    let res = await fetch("https://yashas.pythonanywhere.com/api/developers/");
+    devs = await res.json();
+    window.console.log("New Update!");
   });
 </script>
 
@@ -55,11 +52,19 @@
   <div class="card mb-3 mx-auto">
     <div class="row no-gutters">
       <div class="col-md-4 text-center">
-        <img
-          src={dev.avatarurl ? dev.avatarurl : 'profile-icon.png'}
-          style="max-width:200px;"
-          class="card-img rounded-circle mt-3"
-          alt="..." />
+        {#await gitfun(dev)}
+          <img
+            src="profile-icon.png"
+            style="max-width:200px;"
+            class="card-img rounded-circle mt-3"
+            alt="..." />
+        {:then src}
+          <img
+            {src}
+            style="max-width:200px;"
+            class="card-img rounded-circle mt-3"
+            alt="..." />
+        {/await}
         <div class="text-center">{dev.career}</div>
       </div>
       <div class="col-md-8 text-center">
