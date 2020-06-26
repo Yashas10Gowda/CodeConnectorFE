@@ -22,7 +22,7 @@
     // Since it was unable to bind the value as such.
     selectedcareer = document.getElementById("inputGroupSelect01");
     fetch(
-      `https://yashas.pythonanywhere.com/api/developers/${localStorage.getItem(
+      `your:backend:rest:api/api/developers/${localStorage.getItem(
         "userid"
       )}/`
     )
@@ -49,7 +49,7 @@
   let sendfun = () => {
     submittingtext = true;
     //console.log(selectedcareer.options[selectedcareer.selectedIndex].text,company,website,location,skills,githubUsername,bio,tweet,insta,yt,linkedin,fb)
-    fetch("https://yashas.pythonanywhere.com/api/developers/", {
+    fetch("your:backend:rest:api/api/developers/", {
       headers: {
         "Content-Type": "application/json",
         Authorization:
