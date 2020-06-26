@@ -34,4 +34,4 @@ This is the FrontEnd Repo.
     ```
 
 ## Author
-[![Instagram](https://img.shields.io/badge/follow-%40yacchi_codes-1DA1F2?style=flat&logo=Instagram)](https://www.instagram.com/yacchi__codes) 
+[![Instagram](https://img.shields.io/badge/follow-%40yacchi__codes-1DA1F2?style=flat&logo=Instagram)](https://www.instagram.com/yacchi_codes) 
