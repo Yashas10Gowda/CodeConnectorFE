@@ -19,7 +19,6 @@
   onMount(async () => {
     let res = await fetch("your:backend:rest:api/api/developers/");
     devs = await res.json();
-    window.console.log("New Update!");
   });
 </script>
 
