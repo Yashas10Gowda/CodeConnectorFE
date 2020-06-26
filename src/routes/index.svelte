@@ -26,7 +26,7 @@
 
   onMount(() => {
     if (username != null) {
-      fetch("https://yashas.pythonanywhere.com/api/developers/")
+      fetch("your:backend:rest:api/api/developers/")
         .then(res => res.json())
         .then(da =>
           da.forEach(element => {
@@ -37,7 +37,7 @@
           })
         );
 
-      fetch("https://yashas.pythonanywhere.com/api/experiences/")
+      fetch("your:backend:rest:api/api/experiences/")
         .then(res => res.json())
         .then(da =>
           da.forEach(element => {
@@ -47,7 +47,7 @@
           })
         );
 
-      fetch("https://yashas.pythonanywhere.com/api/educations/")
+      fetch("your:backend:rest:api/api/educations/")
         .then(res => res.json())
         .then(da =>
           da.forEach(element => {
