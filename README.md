@@ -1,6 +1,7 @@
 # CodeConnector
 
 It's web application where you can connect, collaborate and get social with other developers around the world. This web application uses Python's Django as it's Backend.
+This is the FrontEnd Repo.
 
 ## Technology Stack
 ![html5](https://img.shields.io/badge/frontend-html5-orange?style=flat&logo=Html5)
