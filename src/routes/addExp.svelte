@@ -14,7 +14,7 @@
   let sendfun = () => {
     addingtext = true;
     //console.log(company,jobtitle,location,jobdes,frmdate,todate)
-    fetch("https://yashas.pythonanywhere.com/api/experiences/", {
+    fetch("your:backend:rest:api/api/experiences/", {
       headers: {
         "Content-Type": "application/json",
         Authorization:
