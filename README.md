@@ -13,7 +13,7 @@ This is the FrontEnd Repo.
 * Bundler: **Rollup**
 
 ### API used
-* For Fetching Imges of Github Users : [GitHub API](https://developer.github.com/v3/)
+* Fetching Imges of Github Users via username : [GitHub API](https://developer.github.com/v3/)
 
 
 ## Prerequisites
