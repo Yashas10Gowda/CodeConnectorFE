@@ -7,7 +7,7 @@ This is the FrontEnd Repo.
 ![html5](https://img.shields.io/badge/frontend-html5-orange?style=flat&logo=Html5)
 ![css3](https://img.shields.io/badge/frontend-css3-blue?style=flat&logo=CSS3)
 ![svelte](https://img.shields.io/badge/frontend-js-yellow?style=flat&logo=svelte)
-![bootstrap4](https://img.shields.io/badge/pre--processor-sass-ff69b4?style=flat&logo=bootstrap)
+![bootstrap4](https://img.shields.io/badge/style-bootstrap-blue?style=flat&logo=bootstrap)
 
 * Frontend: **HTML**, **CSS**, **Svelte.JS**, **Bootstrap**
 * Bundler: **Rollup**
