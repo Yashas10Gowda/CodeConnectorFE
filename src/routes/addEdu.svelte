@@ -12,7 +12,7 @@
   let sendfun = () => {
     addingtext = true;
     //console.log(company,jobtitle,location,jobdes,frmdate,todate)
-    fetch("https://yashas.pythonanywhere.com/api/educations/", {
+    fetch("your:backend:rest:api/api/educations/", {
       headers: {
         "Content-Type": "application/json",
         Authorization:
