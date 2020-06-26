@@ -1,8 +1,4 @@
-<p align="center">
-    <img style="width:30px;" src="./static/code-solid.svg" alt="CodeConnector"><span><a href="https://codeconnector.web.app/">CodeConnector</a></span>
-    <br>
-    <br>
-</p>
+# CodeConnector
 
 It's web application where you can connect, collaborate and get social with other developers around the world. This web application uses Python's Django as it's Backend.
 
