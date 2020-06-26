@@ -18,7 +18,7 @@
     if (localStorage.getItem("username:authtoken") == null) {
       goto("/");
     } else {
-      fetch("https://yashas.pythonanywhere.com/api/posts/", {
+      fetch("your:backend:rest:api/api/posts/", {
         headers: {
           Authorization:
             "Token " + localStorage.getItem("username:authtoken").split(":")[1]
@@ -30,7 +30,7 @@
   });
 
   let refreshfun = () => {
-    fetch("https://yashas.pythonanywhere.com/api/posts/", {
+    fetch("your:backend:rest:api/api/posts/", {
       headers: {
         Authorization:
           "Token " + localStorage.getItem("username:authtoken").split(":")[1]
@@ -42,7 +42,7 @@
 
   let sendfun = () => {
     if (text != "") {
-      fetch("https://yashas.pythonanywhere.com/api/posts/", {
+      fetch("your:backend:rest:api/api/posts/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -65,7 +65,7 @@
   };
 
   let delfun = i => {
-    fetch(`https://yashas.pythonanywhere.com/api/posts/${i}/`, {
+    fetch(`your:backend:rest:api/api/posts/${i}/`, {
       method: "DELETE",
       headers: {
         Authorization:
