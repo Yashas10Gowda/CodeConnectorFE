@@ -17,7 +17,7 @@
     e.preventDefault();
     error = false;
     state = true;
-    fetch("https://yashas.pythonanywhere.com/api/token/", {
+    fetch("your:backend:rest:api/api/token/", {
       headers: { "Content-Type": "application/json" },
       method: "POST",
       body: JSON.stringify({
