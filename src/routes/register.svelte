@@ -130,7 +130,7 @@
       type="password"
       placeholder="Confirm Password"
       class="form-control"
-      id="exampleInputPassword2" />
+      id="examplInputPassword2" />
   </div>
   <button type="submit" on:click={registerfun} class="btn btn-dark mr-2">
     Register
