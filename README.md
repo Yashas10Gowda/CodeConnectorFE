@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="./static/code-solid.svg" alt="CodeConnector"><span><a href="https://codeconnector.web.app/">CodeConnector</a></span>
+    <img style="width:30px;" src="./static/code-solid.svg" alt="CodeConnector"><span><a href="https://codeconnector.web.app/">CodeConnector</a></span>
     <br>
     <br>
 </p>
