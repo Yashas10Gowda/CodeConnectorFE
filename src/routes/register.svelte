@@ -25,7 +25,7 @@
       email.includes("@") &&
       email.includes(".")
     ) {
-      fetch("https://yashas.pythonanywhere.com/api/users/", {
+      fetch("your:backend:rest:api", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
