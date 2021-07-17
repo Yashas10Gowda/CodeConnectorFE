@@ -1,11 +1,10 @@
 <script>
-  import { goto } from "@sapper/app";
   import { onMount } from "svelte";
-  import Nav from "../components/Nav.svelte";
+  import { navigate,link } from "svelte-routing";
 
   onMount(() => {
     if (localStorage.getItem("username:authtoken") != null) {
-      goto("/");
+      navigate('/')
     }
   });
 
@@ -36,7 +35,7 @@
           error = true;
         } else {
           state = false;
-          goto("/");
+          navigate('/')
         }
       });
   };
@@ -67,7 +66,6 @@
   <title>Login into CC Account</title>
 </svelte:head>
 
-<Nav />
 <div class="form" style="max-width:10in;">
   <div class="cre my-4">Login Into Your Account</div>
   <form>
@@ -92,7 +90,7 @@
     </button>
     <span>
       Do not have an account?
-      <a class="text-info" href="/register">Register</a>
+      <a class="text-info" href="/register" use:link>Register</a>
     </span>
   </form>
   {#if state && !error}

@@ -1,6 +1,7 @@
 <script>
   import { onMount } from "svelte";
-  import Nav from "../components/Nav.svelte";
+  import { link } from "svelte-routing"
+  
   let socnet = false;
   let updatealert = false,
     erroralert = false,
@@ -112,8 +113,6 @@
 <svelte:head>
   <title>Edit your Profile</title>
 </svelte:head>
-
-<Nav />
 
 {#if erroralert}
   <!-- <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -299,7 +298,7 @@
   {/if}
 
   <button on:click={sendfun} class="btn btn-info mt-4">Submit</button>
-  <a href="/">
+  <a href="/" use:link>
     <button class="btn btn-light mt-4 ml-2">Go Back</button>
   </a>
   {#if submittingtext}

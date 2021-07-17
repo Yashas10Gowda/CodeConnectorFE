@@ -1,20 +1,18 @@
 <script>
-  import Nav from "../components/Nav.svelte";
+  import { link } from "svelte-routing"
 
   let updatealert = false,
     erroralert = false,
     addingtext = false;
-  let company = "",
-    jobtitle = "",
-    location = "",
-    jobdes = "",
+  let college = "",
+    degree = "",
     frmdate,
     todate;
 
   let sendfun = () => {
     addingtext = true;
     //console.log(company,jobtitle,location,jobdes,frmdate,todate)
-    fetch("https://yashas.pythonanywhere.com/api/experiences/", {
+    fetch("https://yashas.pythonanywhere.com/api/educations/", {
       headers: {
         "Content-Type": "application/json",
         Authorization:
@@ -22,10 +20,8 @@
       },
       method: "POST",
       body: JSON.stringify({
-        aff_company: company,
-        loc_company: location,
-        job_title: jobtitle,
-        job_des: jobdes,
+        college: college,
+        degree: degree,
         to_date: todate,
         frm_date: frmdate
       })
@@ -64,10 +60,9 @@
 </style>
 
 <svelte:head>
-  <title>Add Experience</title>
+  <title>Add Education</title>
 </svelte:head>
 
-<Nav />
 
 {#if erroralert}
   <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -81,7 +76,7 @@
 
 {#if updatealert}
   <div class="alert alert-info alert-dismissible fade show" role="alert">
-    <strong>Experience Added --></strong>
+    <strong>Education Added --></strong>
     Successful.
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
@@ -90,43 +85,29 @@
 {/if}
 
 <div class="form" style="max-width:10in;">
-  <div class="cre my-4">Add Experience</div>
+  <div class="cre my-4">Add Education</div>
 
   <div class="input-group my-2">
     <input
-      bind:value={company}
+      bind:value={college}
       type="text"
       class="form-control"
-      placeholder="Company Name"
+      placeholder="College"
       aria-label="Username"
       aria-describedby="basic-addon1" />
   </div>
 
   <div class="input-group my-2">
     <input
-      bind:value={jobtitle}
+      bind:value={degree}
       type="text"
       class="form-control"
-      placeholder="Job Title"
+      placeholder="Degree"
       aria-label="Username"
       aria-describedby="basic-addon1" />
   </div>
 
-  <div class="input-group my-2">
-    <input
-      bind:value={location}
-      type="text"
-      class="form-control"
-      placeholder="Location of the Company"
-      aria-label="Username"
-      aria-describedby="basic-addon1" />
-
-  </div>
-  <small id="emailHelp" class="form-text text-muted mb-3">
-    &nbsp;City & state suggested (eg. Bengaluru, Karnataka).
-  </small>
-
-  <div>
+  <div class="mt-3">
     <span class="mr-2">From Date:</span>
     <input bind:value={frmdate} type="date" />
   </div>
@@ -136,22 +117,11 @@
     <input bind:value={todate} type="date" />
   </div>
 
-  <div class="input-group my-2">
-    <textarea
-      bind:value={jobdes}
-      class="form-control"
-      placeholder="Job Description."
-      aria-label="With textarea" />
-  </div>
-  <small id="emailHelp" class="form-text text-muted mb-3">
-    &nbsp;Description of how your job was.
-  </small>
-
-  <button on:click={sendfun} class="btn btn-info">Add Experience</button>
+  <button on:click={sendfun} class="btn btn-info mt-2">Add Education</button>
   <a href="/">
-    <button class="btn btn-light ml-2">Go Back</button>
+    <button class="btn btn-light mt-2 ml-2" use:link>Go Back</button>
   </a>
   {#if addingtext}
-    <div class="text-info mt-1 mb-4">Adding...</div>
+    <div class="text-info my-1">Adding...</div>
   {/if}
 </div>

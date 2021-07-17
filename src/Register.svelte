@@ -1,11 +1,10 @@
 <script>
-  import { goto } from "@sapper/app";
   import { onMount } from "svelte";
-  import Nav from "../components/Nav.svelte";
+  import { navigate,link } from "svelte-routing";
 
   onMount(() => {
     if (localStorage.getItem("username:authtoken") != null) {
-      goto("/");
+      navigate('/')
     }
   });
 
@@ -41,7 +40,7 @@
           email = "";
           createdalert = true;
           alerttext = "Account Registered --> You're now part of CodeConnector";
-          setTimeout(() => goto("/login"), 2000);
+          setTimeout(() => navigate("/login"), 2000);
         } else {
           createdalert = true;
           alerttext = "It looks like this username is already taken :'( ";
@@ -85,8 +84,6 @@
 <svelte:head>
   <title>Register to CodeConnector</title>
 </svelte:head>
-
-<Nav />
 
 {#if createdalert}
   <div class="alert alert-info" role="alert">{alerttext}</div>
@@ -137,6 +134,6 @@
   </button>
   <span>
     Already have an account?
-    <a class="text-info" href="/login">Log In</a>
+    <a class="text-info" href="/login" use:link>Log In</a>
   </span>
 </div>

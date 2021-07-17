@@ -1,3 +1,6 @@
+html{
+	overscroll-behavior-y: contain;
+}
 
 body {
 	margin: 0;

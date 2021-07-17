@@ -1,6 +1,6 @@
 <script>
-  import Nav from "../components/Nav.svelte";
   import { onMount } from "svelte";
+  import {link} from "svelte-routing"
 
   let username = null;
   onMount(() => {
@@ -58,11 +58,17 @@
         );
     }
   });
+
 </script>
 
 <style>
   h1.display-3 {
-    margin-top: 10%;
+    margin-top: 8%;
+    background-color: #17a2b8;
+  }
+  .btn-dark{
+    color: #343a40;
+    background-color:#17a2b8;
   }
   .btn-info {
     font-size: 20px;
@@ -89,12 +95,12 @@
   .jumbotron {
     background-image: linear-gradient(
         to right,
-        rgba(52, 58, 64, 0.2),
+        rgba(52, 58, 64, 0.7),
         rgba(52, 58, 64, 0.9)
       ),
-      url("/ccpic1.jpg");
+      url("/img/ccpic1.jpg");
     height: 90vh;
-    background-position: 75% 75%;
+    background-position: 75% 85%;
   }
   table {
     max-width: 8in;
@@ -118,6 +124,15 @@
       margin: 20px;
     }
   }
+  .lead{
+    color:#17a2b8;
+    background-color: #343a40;
+    display: inline-block;
+  }
+  .hr{
+    background-color: #17a2b8;
+    color: #17a2b8;
+  }
 </style>
 
 <svelte:head>
@@ -128,29 +143,18 @@
   {/if}
 </svelte:head>
 
-<Nav />
-
 {#if username == null}
   <div class="jumbotron bg-dark text-light text-center rounded-0">
-    <h1 class="display-3">Code Connector</h1>
+    <h1 class="display-3 text-dark">Code Connector</h1>
     <p class="lead">
       Create a developer profile/portfolio, share posts and get help from other
       developers.
     </p>
-    <p class="font-italic text-right">
-      Developed by
-      <a
-        class="p-1 bg-info text-light"
-        rel="noopener"
-        href="https://yashasgowda.web.app/">
-        Yashas Gowda
-      </a>
-    </p>
-    <hr class="mt-3 bg-light" />
-    <a class="btn btn-outline-light mt-3 px-2" href="/register" role="button">
+    <hr class="mt-3 hr" />
+    <a class="btn btn-dark mt-3 px-2" href="/register" role="button" use:link>
       Register
     </a>
-    <a class="btn btn-outline-light mt-3 px-3" href="/login" role="button">
+    <a class="btn btn-dark mt-3 px-3" href="/login" role="button" use:link>
       Login
     </a>
   </div>
@@ -159,13 +163,13 @@
     <div class="dash text-info">Dashboard</div>
     <div class="username">Welcome {username.toUpperCase()}</div>
     {#if userid}
-      <a href="/profileEdit" class="btn btn-outline-info btn-sm mt-1">
+      <a href="/profileEdit" class="btn btn-outline-info btn-sm mt-1" use:link>
         Edit Info
       </a>
-      <a href="/addEdu" class="btn btn-outline-info btn-sm mt-1">
+      <a href="/addEdu" class="btn btn-outline-info btn-sm mt-1" use:link>
         Add Education
       </a>
-      <a href="/addExp" class="btn btn-outline-info btn-sm mt-1">
+      <a href="/addExp" class="btn btn-outline-info btn-sm mt-1" use:link>
         Add Experience
       </a>
 
@@ -223,7 +227,7 @@
       <div>
         You have not added any info to your profile yet, please do add some.
       </div>
-      <a href="/profileEdit">
+      <a href="/profileEdit" use:link>
         <button class="btn btn-info btn-sm mt-3">Add Info</button>
       </a>
     {/if}

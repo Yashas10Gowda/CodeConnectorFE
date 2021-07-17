@@ -1,6 +1,4 @@
 <script>
-  import Nav from "../components/Nav.svelte";
-
   const devobj = JSON.parse(sessionStorage.getItem("devdetail"));
 
   let devid = devobj.user;
@@ -49,8 +47,6 @@
 <svelte:head>
   <title>{devobj.username.toUpperCase()}'s Details</title>
 </svelte:head>
-
-<Nav />
 
 <div class="card bg-info mx-auto mt-3">
 

@@ -1,19 +1,19 @@
 <script>
   import { onMount } from "svelte";
-  import Nav from "../components/Nav.svelte";
+  import {link} from 'svelte-routing'
 
   let devs = [];
   let devnames = [];
 
   async function gitfun(x) {
     if (x.github == null) {
-      x.avatarurl = "profile-icon.png";
-      return "profile-icon.png";
+      x.avatarurl = "/img/profile-icon.png";
+      return "/img/profile-icon.png";
     }
     let res = await fetch(`https://api.github.com/users/${x.github}`);
     let resj = await res.json();
     x.avatarurl = resj.avatar_url;
-    return res.ok ? resj.avatar_url : "profile-icon.png";
+    return res.ok ? resj.avatar_url : "/img/profile-icon.png";
   }
 
   onMount(async () => {
@@ -43,8 +43,6 @@
   <title>Our Developers</title>
 </svelte:head>
 
-<Nav />
-
 <h1 class="text-info text-center my-3">Developers</h1>
 <h1 class="text-center mb-3 dev-noth">Browse and connect with developers.</h1>
 
@@ -54,7 +52,7 @@
       <div class="col-md-4 text-center">
         {#await gitfun(dev)}
           <img
-            src="profile-icon.png"
+            src="/img/profile-icon.png"
             style="max-width:200px;"
             class="card-img rounded-circle mt-3"
             alt="..." />
@@ -77,7 +75,7 @@
           </p>
           <a
             on:click={() => sessionStorage.setItem('devdetail', JSON.stringify(dev))}
-            href="/devDetails">
+            href="/devDetails" use:link>
             <button class="btn btn-info">View Profile</button>
           </a>
         </div>

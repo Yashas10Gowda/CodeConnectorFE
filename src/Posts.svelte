@@ -1,7 +1,6 @@
 <script>
-  import Nav from "../components/Nav.svelte";
   import { onMount } from "svelte";
-  import { goto } from "@sapper/app";
+  import { navigate } from "svelte-routing";
 
   let posts = [];
   let d,
@@ -16,7 +15,7 @@
 
   onMount(() => {
     if (localStorage.getItem("username:authtoken") == null) {
-      goto("/");
+      navigate('/')
     } else {
       fetch("https://yashas.pythonanywhere.com/api/posts/", {
         headers: {
@@ -131,7 +130,6 @@
   }
 </style>
 
-<Nav />
 
 {#if addsuc}
   <div class="alert alert-info" role="alert">

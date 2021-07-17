@@ -3,12 +3,12 @@
     "short_name":"CodeConnector",
     "icons":[
         {
-            "src":"icon-192.png",
+            "src":"img/icon-192.png",
             "type":"image/png",
             "sizes":"192x192"
         },
         {
-            "src":"icon-512.png",
+            "src":"img/icon-512.png",
             "type":"image/png",
             "sizes":"512x512"
         }

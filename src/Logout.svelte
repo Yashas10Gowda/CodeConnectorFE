@@ -1,9 +1,9 @@
 <script>
-import {goto} from '@sapper/app'
+import { navigate } from 'svelte-routing';
 
 window.localStorage.removeItem('username:authtoken')
 window.localStorage.removeItem('userid')
-goto('/')
+navigate('/')
 
 </script>
 

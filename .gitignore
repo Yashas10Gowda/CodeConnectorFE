@@ -1,7 +1,2 @@
-.DS_Store
 /node_modules/
-/src/node_modules/@sapper/
-yarn-error.log
-/cypress/screenshots/
-/__sapper__/
-.firebase/hosting.X19zYXBwZXJfX1xleHBvcnQ.cache
+/public/build/
