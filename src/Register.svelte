@@ -1,10 +1,11 @@
 <script>
+  import Nav from './Nav.svelte'
   import { onMount } from "svelte";
-  import { navigate,link } from "svelte-routing";
+  import { push,link } from 'svelte-spa-router';
 
   onMount(() => {
     if (localStorage.getItem("username:authtoken") != null) {
-      navigate('/')
+      push('/')
     }
   });
 
@@ -84,6 +85,8 @@
 <svelte:head>
   <title>Register to CodeConnector</title>
 </svelte:head>
+
+<Nav />
 
 {#if createdalert}
   <div class="alert alert-info" role="alert">{alerttext}</div>

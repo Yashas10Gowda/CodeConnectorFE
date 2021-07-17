@@ -1,9 +1,9 @@
 <script>
-import { navigate } from 'svelte-routing';
+import { push } from 'svelte-spa-router';
 
 window.localStorage.removeItem('username:authtoken')
 window.localStorage.removeItem('userid')
-navigate('/')
+push('/')
 
 </script>
 

@@ -1,6 +1,7 @@
 <script>
+  import Nav from './Nav.svelte'
   import { onMount } from "svelte";
-  import { link } from "svelte-routing"
+  import { link } from 'svelte-spa-router';
   
   let socnet = false;
   let updatealert = false,
@@ -113,6 +114,8 @@
 <svelte:head>
   <title>Edit your Profile</title>
 </svelte:head>
+
+<Nav />
 
 {#if erroralert}
   <!-- <div class="alert alert-danger alert-dismissible fade show" role="alert">

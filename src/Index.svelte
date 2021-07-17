@@ -1,6 +1,7 @@
 <script>
+  import Nav from './Nav.svelte'
   import { onMount } from "svelte";
-  import {link} from "svelte-routing"
+  import {link} from 'svelte-spa-router'
 
   let username = null;
   onMount(() => {
@@ -98,7 +99,7 @@
         rgba(52, 58, 64, 0.7),
         rgba(52, 58, 64, 0.9)
       ),
-      url("/img/ccpic1.jpg");
+      url("https://yashas.pythonanywhere.com/static/img/ccpic1.jpg");
     height: 90vh;
     background-position: 75% 85%;
   }
@@ -142,6 +143,8 @@
     <title>Welcome {username.toUpperCase()}</title>
   {/if}
 </svelte:head>
+
+<Nav />
 
 {#if username == null}
   <div class="jumbotron bg-dark text-light text-center rounded-0">

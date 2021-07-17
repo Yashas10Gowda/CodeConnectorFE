@@ -1,5 +1,6 @@
 <script>
-  import { link } from "svelte-routing"
+  import { link } from "svelte-spa-router"
+  import Nav from './Nav.svelte'
 
   let updatealert = false,
     erroralert = false,
@@ -63,6 +64,7 @@
   <title>Add Education</title>
 </svelte:head>
 
+<Nav />
 
 {#if erroralert}
   <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -118,8 +120,8 @@
   </div>
 
   <button on:click={sendfun} class="btn btn-info mt-2">Add Education</button>
-  <a href="/">
-    <button class="btn btn-light mt-2 ml-2" use:link>Go Back</button>
+  <a href="/" use:link>
+    <button class="btn btn-light mt-2 ml-2">Go Back</button>
   </a>
   {#if addingtext}
     <div class="text-info my-1">Adding...</div>

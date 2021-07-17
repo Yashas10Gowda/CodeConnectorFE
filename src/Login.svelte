@@ -1,10 +1,11 @@
 <script>
+  import Nav from './Nav.svelte'
   import { onMount } from "svelte";
-  import { navigate,link } from "svelte-routing";
+  import { push,link } from 'svelte-spa-router';
 
   onMount(() => {
     if (localStorage.getItem("username:authtoken") != null) {
-      navigate('/')
+      push('/')
     }
   });
 
@@ -35,7 +36,7 @@
           error = true;
         } else {
           state = false;
-          navigate('/')
+          push('/')
         }
       });
   };
@@ -65,6 +66,8 @@
 <svelte:head>
   <title>Login into CC Account</title>
 </svelte:head>
+
+<Nav />
 
 <div class="form" style="max-width:10in;">
   <div class="cre my-4">Login Into Your Account</div>

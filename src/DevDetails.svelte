@@ -1,4 +1,5 @@
 <script>
+  import Nav from './Nav.svelte'
   const devobj = JSON.parse(sessionStorage.getItem("devdetail"));
 
   let devid = devobj.user;
@@ -48,12 +49,14 @@
   <title>{devobj.username.toUpperCase()}'s Details</title>
 </svelte:head>
 
+<Nav />
+
 <div class="card bg-info mx-auto mt-3">
 
   <div class="card-body text-center">
     <img
       style="max-width:300px;"
-      src={devobj.avatarurl ? devobj.avatarurl : 'profile-icon.png'}
+      src={devobj.avatarurl ? devobj.avatarurl : 'https://yashas.pythonanywhere.com/static/img/profile-icon.png'}
       class="rounded-circle mb-4"
       alt="" />
     <div class="usr text-center">{devobj.username.toUpperCase()}</div>
