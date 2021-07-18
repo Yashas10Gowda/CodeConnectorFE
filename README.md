@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="./static/code-solid.svg" alt="CodeConnector"><span><a href="https://codeconnector.web.app/">CodeConnector</a></span>
+    <img src="https://yashas.pythonanywhere.com/static/img/code-solid.svg" alt="CodeConnector"><span><a href="https://yashas.pythonanywhere.com/code-connector/">CodeConnector</a></span>
     <br>
     <br>
 </p>
