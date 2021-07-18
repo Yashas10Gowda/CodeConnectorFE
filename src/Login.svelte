@@ -1,11 +1,11 @@
 <script>
-  import Nav from './Nav.svelte'
+  import Nav from "./Nav.svelte";
   import { onMount } from "svelte";
-  import { push,link } from 'svelte-spa-router';
+  import { push, link } from "svelte-spa-router";
 
   onMount(() => {
     if (localStorage.getItem("username:authtoken") != null) {
-      push('/')
+      push("/");
     }
   });
 
@@ -13,7 +13,7 @@
   let state = false;
   let error = false;
 
-  const loginfun = e => {
+  const loginfun = (e) => {
     e.preventDefault();
     error = false;
     state = true;
@@ -22,11 +22,11 @@
       method: "POST",
       body: JSON.stringify({
         username: username.toLowerCase(),
-        password: password
-      })
+        password: password,
+      }),
     })
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         localStorage.setItem(
           "username:authtoken",
           String(username.toLowerCase() + ":" + data.token)
@@ -36,11 +36,54 @@
           error = true;
         } else {
           state = false;
-          push('/')
+          push("/");
         }
       });
   };
 </script>
+
+<svelte:head>
+  <title>Login into CC Account</title>
+</svelte:head>
+
+<Nav />
+
+<div class="form" style="max-width:10in;">
+  <div class="cre my-4">Login Into Your Account</div>
+  <form>
+    <div class="form-group">
+      <input
+        bind:value={username}
+        placeholder="Username"
+        class="form-control text-lowercase"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+      />
+    </div>
+    <div class="form-group">
+      <input
+        bind:value={password}
+        type="password"
+        placeholder="Password"
+        class="form-control"
+        id="exampleInputPassword1"
+      />
+    </div>
+    <button type="submit" on:click={loginfun} class="btn btn-dark mr-2">
+      Login
+    </button>
+    <span>
+      Do not have an account?
+      <a class="text-info" href="/register" use:link>Register</a>
+    </span>
+  </form>
+  {#if state && !error}
+    <div style="margin:5px 0;">Logging In...</div>
+  {/if}
+  {#if error}
+    <div style="margin:5px 0;">LogIn Failed...</div>
+  {/if}
+</div>
 
 <style>
   .cre {
@@ -62,44 +105,3 @@
     }
   }
 </style>
-
-<svelte:head>
-  <title>Login into CC Account</title>
-</svelte:head>
-
-<Nav />
-
-<div class="form" style="max-width:10in;">
-  <div class="cre my-4">Login Into Your Account</div>
-  <form>
-    <div class="form-group">
-      <input
-        bind:value={username}
-        placeholder="Username"
-        class="form-control text-lowercase"
-        id="exampleInputEmail1"
-        aria-describedby="emailHelp" />
-    </div>
-    <div class="form-group">
-      <input
-        bind:value={password}
-        type="password"
-        placeholder="Password"
-        class="form-control"
-        id="exampleInputPassword1" />
-    </div>
-    <button type="submit" on:click={loginfun} class="btn btn-dark mr-2">
-      Login
-    </button>
-    <span>
-      Do not have an account?
-      <a class="text-info" href="/register" use:link>Register</a>
-    </span>
-  </form>
-  {#if state && !error}
-    <div style="margin:5px 0;">Logging In...</div>
-  {/if}
-  {#if error}
-    <div style="margin:5px 0;">LogIn Failed...</div>
-  {/if}
-</div>

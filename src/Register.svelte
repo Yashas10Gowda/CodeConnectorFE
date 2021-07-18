@@ -1,11 +1,11 @@
 <script>
-  import Nav from './Nav.svelte'
+  import Nav from "./Nav.svelte";
   import { onMount } from "svelte";
-  import { push,link } from 'svelte-spa-router';
+  import { push, link } from "svelte-spa-router";
 
   onMount(() => {
     if (localStorage.getItem("username:authtoken") != null) {
-      push('/')
+      push("/");
     }
   });
 
@@ -31,9 +31,9 @@
         body: JSON.stringify({
           username: username.toLowerCase(),
           email: email,
-          password: password2
-        })
-      }).then(res => {
+          password: password2,
+        }),
+      }).then((res) => {
         if (res.ok) {
           username = "";
           password2 = "";
@@ -41,7 +41,7 @@
           email = "";
           createdalert = true;
           alerttext = "Account Registered --> You're now part of CodeConnector";
-          setTimeout(() => navigate("/login"), 2000);
+          setTimeout(() => push("/login"), 2000);
         } else {
           createdalert = true;
           alerttext = "It looks like this username is already taken :'( ";
@@ -55,6 +55,69 @@
     }
   };
 </script>
+
+<svelte:head>
+  <title>Register to CodeConnector</title>
+</svelte:head>
+
+<Nav />
+
+{#if createdalert}
+  <div class="alert alert-info" role="alert">{alerttext}</div>
+{/if}
+<div class="form" style="max-width:10in;">
+  <div class="cre my-4">Create Your Account</div>
+  <div class="form-group">
+    <input
+      bind:value={username}
+      placeholder="Username"
+      class="form-control text-lowercase"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+    />
+    <small id="emailHelp" class="form-text text-muted">
+      Username must be one word.
+    </small>
+  </div>
+  <div class="form-group">
+    <input
+      bind:value={email}
+      type="email"
+      placeholder="Email"
+      class="form-control"
+      id="exampleInputEmail2"
+      aria-describedby="emailHelp"
+    />
+    <small id="emailHelp" class="form-text text-muted">
+      We'll never share your email with anyone else.
+    </small>
+  </div>
+  <div class="form-group">
+    <input
+      bind:value={password1}
+      type="password"
+      placeholder="Password"
+      class="form-control"
+      id="exampleInputPassword1"
+    />
+  </div>
+  <div class="form-group">
+    <input
+      bind:value={password2}
+      type="password"
+      placeholder="Confirm Password"
+      class="form-control"
+      id="exampleInputPassword2"
+    />
+  </div>
+  <button type="submit" on:click={registerfun} class="btn btn-dark mr-2">
+    Register
+  </button>
+  <span>
+    Already have an account?
+    <a class="text-info" href="/login" use:link>Log In</a>
+  </span>
+</div>
 
 <style>
   .cre {
@@ -81,62 +144,3 @@
     }
   }
 </style>
-
-<svelte:head>
-  <title>Register to CodeConnector</title>
-</svelte:head>
-
-<Nav />
-
-{#if createdalert}
-  <div class="alert alert-info" role="alert">{alerttext}</div>
-{/if}
-<div class="form" style="max-width:10in;">
-  <div class="cre my-4">Create Your Account</div>
-  <div class="form-group">
-    <input
-      bind:value={username}
-      placeholder="Username"
-      class="form-control text-lowercase"
-      id="exampleInputEmail1"
-      aria-describedby="emailHelp" />
-    <small id="emailHelp" class="form-text text-muted">
-      Username must be one word.
-    </small>
-  </div>
-  <div class="form-group">
-    <input
-      bind:value={email}
-      type="email"
-      placeholder="Email"
-      class="form-control"
-      id="exampleInputEmail2"
-      aria-describedby="emailHelp" />
-    <small id="emailHelp" class="form-text text-muted">
-      We'll never share your email with anyone else.
-    </small>
-  </div>
-  <div class="form-group">
-    <input
-      bind:value={password1}
-      type="password"
-      placeholder="Password"
-      class="form-control"
-      id="exampleInputPassword1" />
-  </div>
-  <div class="form-group">
-    <input
-      bind:value={password2}
-      type="password"
-      placeholder="Confirm Password"
-      class="form-control"
-      id="exampleInputPassword2" />
-  </div>
-  <button type="submit" on:click={registerfun} class="btn btn-dark mr-2">
-    Register
-  </button>
-  <span>
-    Already have an account?
-    <a class="text-info" href="/login" use:link>Log In</a>
-  </span>
-</div>

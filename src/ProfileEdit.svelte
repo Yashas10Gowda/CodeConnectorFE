@@ -1,8 +1,8 @@
 <script>
-  import Nav from './Nav.svelte'
+  import Nav from "./Nav.svelte";
   import { onMount } from "svelte";
-  import { link } from 'svelte-spa-router';
-  
+  import { link } from "svelte-spa-router";
+
   let socnet = false;
   let updatealert = false,
     erroralert = false,
@@ -28,8 +28,8 @@
         "userid"
       )}/`
     )
-      .then(res => res.json())
-      .then(da => {
+      .then((res) => res.json())
+      .then((da) => {
         selectedcareer.options[selectedcareer.selectedIndex].text =
           da.career == undefined
             ? "Select Your Professional Status"
@@ -50,12 +50,11 @@
 
   let sendfun = () => {
     submittingtext = true;
-    //console.log(selectedcareer.options[selectedcareer.selectedIndex].text,company,website,location,skills,githubUsername,bio,tweet,insta,yt,linkedin,fb)
     fetch("https://yashas.pythonanywhere.com/api/developers/", {
       headers: {
         "Content-Type": "application/json",
         Authorization:
-          "Token " + localStorage.getItem("username:authtoken").split(":")[1]
+          "Token " + localStorage.getItem("username:authtoken").split(":")[1],
       },
       method: "POST",
       body: JSON.stringify({
@@ -71,11 +70,11 @@
         fblink: fb == "" ? null : fb,
         instalink: insta == "" ? null : insta,
         youtubelink: yt == "" ? null : yt,
-        username: localStorage.getItem("username:authtoken").split(":")[0]
-      })
+        username: localStorage.getItem("username:authtoken").split(":")[0],
+      }),
     })
-      .then(res => res)
-      .then(da => {
+      .then((res) => res)
+      .then((da) => {
         da.ok ? (updatealert = true) : (erroralert = true);
         submittingtext = false;
         window.setTimeout(() => {
@@ -87,30 +86,6 @@
   };
 </script>
 
-<style>
-  .cre {
-    font-size: 30px;
-  }
-  .form {
-    margin: 5px 15%;
-  }
-  .alert {
-    margin: 2px 15%;
-  }
-
-  @media (max-width: 750px) {
-    .form {
-      margin: 5px 5%;
-    }
-    .cre {
-      font-size: 25px;
-    }
-    .alert {
-      margin: 0px 5%;
-    }
-  }
-</style>
-
 <svelte:head>
   <title>Edit your Profile</title>
 </svelte:head>
@@ -118,12 +93,6 @@
 <Nav />
 
 {#if erroralert}
-  <!-- <div class="alert alert-danger alert-dismissible fade show" role="alert">
-  <strong>Error -></strong> Oops something went wrong. Peace.
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div> -->
   <div class="alert alert-info" role="alert">
     <strong>Error --></strong>
     Oops something went wrong. Peace.
@@ -131,12 +100,6 @@
 {/if}
 
 {#if updatealert}
-  <!-- <div class="alert alert-info alert-dismissible fade show" role="alert">
-  <strong>Profile Updated -></strong> You're developer profile is up to date.
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div> -->
   <div class="alert alert-info" role="alert">
     <strong>Profile Updated -></strong>
     You're developer profile is up to date.
@@ -169,8 +132,8 @@
       class="form-control"
       placeholder="Company Name"
       aria-label="Username"
-      aria-describedby="basic-addon1" />
-
+      aria-describedby="basic-addon1"
+    />
   </div>
   <small id="emailHelp" class="form-text text-muted mb-3">
     &nbsp;Could be your own company or one you work for.
@@ -183,8 +146,8 @@
       class="form-control"
       placeholder="Website"
       aria-label="Username"
-      aria-describedby="basic-addon1" />
-
+      aria-describedby="basic-addon1"
+    />
   </div>
   <small id="emailHelp" class="form-text text-muted mb-3">
     &nbsp;Could be your own portfolio or your company's website.
@@ -197,8 +160,8 @@
       class="form-control"
       placeholder="Location"
       aria-label="Username"
-      aria-describedby="basic-addon1" />
-
+      aria-describedby="basic-addon1"
+    />
   </div>
   <small id="emailHelp" class="form-text text-muted mb-3">
     &nbsp;City & state suggested (eg. Bengaluru, Karnataka).
@@ -211,8 +174,8 @@
       class="form-control"
       placeholder="Skills"
       aria-label="Username"
-      aria-describedby="basic-addon1" />
-
+      aria-describedby="basic-addon1"
+    />
   </div>
   <small id="emailHelp" class="form-text text-muted mb-3">
     &nbsp;Please use commas(eg. Python,JavaScript).
@@ -225,8 +188,8 @@
       class="form-control"
       placeholder="GitHub Username"
       aria-label="Username"
-      aria-describedby="basic-addon1" />
-
+      aria-describedby="basic-addon1"
+    />
   </div>
   <small id="emailHelp" class="form-text text-muted mb-3">
     &nbsp;If you want your Avatar and Github link to appear, Do include your
@@ -238,7 +201,8 @@
       bind:value={bio}
       class="form-control"
       placeholder="A short bio of yourself."
-      aria-label="With textarea" />
+      aria-label="With textarea"
+    />
   </div>
   <small id="emailHelp" class="form-text text-muted mb-3">
     &nbsp;Tell us a little about yourself.
@@ -259,7 +223,8 @@
           class="form-control"
           placeholder="Your Twitter URL"
           aria-label="Username"
-          aria-describedby="basic-addon1" />
+          aria-describedby="basic-addon1"
+        />
       </div>
       <div class="input-group mb-2">
         <input
@@ -268,7 +233,8 @@
           class="form-control"
           placeholder="Your Instagram URL"
           aria-label="Username"
-          aria-describedby="basic-addon1" />
+          aria-describedby="basic-addon1"
+        />
       </div>
       <div class="input-group mb-2">
         <input
@@ -277,7 +243,8 @@
           class="form-control"
           placeholder="Your Facebook URL"
           aria-label="Username"
-          aria-describedby="basic-addon1" />
+          aria-describedby="basic-addon1"
+        />
       </div>
       <div class="input-group mb-2">
         <input
@@ -286,7 +253,8 @@
           class="form-control"
           placeholder="Your LinkedIn URL"
           aria-label="Username"
-          aria-describedby="basic-addon1" />
+          aria-describedby="basic-addon1"
+        />
       </div>
       <div class="input-group mb-2">
         <input
@@ -295,7 +263,8 @@
           class="form-control"
           placeholder="Your Youtube URL"
           aria-label="Username"
-          aria-describedby="basic-addon1" />
+          aria-describedby="basic-addon1"
+        />
       </div>
     </div>
   {/if}
@@ -309,3 +278,27 @@
   {/if}
   <div class="my-5" />
 </div>
+
+<style>
+  .cre {
+    font-size: 30px;
+  }
+  .form {
+    margin: 5px 15%;
+  }
+  .alert {
+    margin: 2px 15%;
+  }
+
+  @media (max-width: 750px) {
+    .form {
+      margin: 5px 5%;
+    }
+    .cre {
+      font-size: 25px;
+    }
+    .alert {
+      margin: 0px 5%;
+    }
+  }
+</style>

@@ -1,6 +1,6 @@
 <script>
-  import { link } from "svelte-spa-router"
-  import Nav from './Nav.svelte'
+  import { link } from "svelte-spa-router";
+  import Nav from "./Nav.svelte";
 
   let updatealert = false,
     erroralert = false,
@@ -17,48 +17,24 @@
       headers: {
         "Content-Type": "application/json",
         Authorization:
-          "Token " + localStorage.getItem("username:authtoken").split(":")[1]
+          "Token " + localStorage.getItem("username:authtoken").split(":")[1],
       },
       method: "POST",
       body: JSON.stringify({
         college: college,
         degree: degree,
         to_date: todate,
-        frm_date: frmdate
-      })
+        frm_date: frmdate,
+      }),
     })
-      .then(res => res)
-      .then(da => {
+      .then((res) => res)
+      .then((da) => {
         da.ok ? (updatealert = true) : (erroralert = true);
         addingtext = false;
         window.scrollTo(0, 0);
       });
   };
 </script>
-
-<style>
-  .cre {
-    font-size: 30px;
-  }
-  .form {
-    margin: 5px 15%;
-  }
-  .alert {
-    margin: 2px 15%;
-  }
-
-  @media (max-width: 750px) {
-    .form {
-      margin: 5px 5%;
-    }
-    .cre {
-      font-size: 25px;
-    }
-    .alert {
-      margin: 0px 5%;
-    }
-  }
-</style>
 
 <svelte:head>
   <title>Add Education</title>
@@ -96,7 +72,8 @@
       class="form-control"
       placeholder="College"
       aria-label="Username"
-      aria-describedby="basic-addon1" />
+      aria-describedby="basic-addon1"
+    />
   </div>
 
   <div class="input-group my-2">
@@ -106,7 +83,8 @@
       class="form-control"
       placeholder="Degree"
       aria-label="Username"
-      aria-describedby="basic-addon1" />
+      aria-describedby="basic-addon1"
+    />
   </div>
 
   <div class="mt-3">
@@ -127,3 +105,27 @@
     <div class="text-info my-1">Adding...</div>
   {/if}
 </div>
+
+<style>
+  .cre {
+    font-size: 30px;
+  }
+  .form {
+    margin: 5px 15%;
+  }
+  .alert {
+    margin: 2px 15%;
+  }
+
+  @media (max-width: 750px) {
+    .form {
+      margin: 5px 5%;
+    }
+    .cre {
+      font-size: 25px;
+    }
+    .alert {
+      margin: 0px 5%;
+    }
+  }
+</style>

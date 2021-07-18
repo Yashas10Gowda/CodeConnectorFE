@@ -1,20 +1,22 @@
 <script>
-  import Nav from './Nav.svelte'
+  import Nav from "./Nav.svelte";
   import { onMount } from "svelte";
-  import {link} from 'svelte-spa-router'
+  import { link } from "svelte-spa-router";
 
   let devs = [];
-  let devnames = [];
 
   async function gitfun(x) {
     if (x.github == null) {
-      x.avatarurl = "https://yashas.pythonanywhere.com/static/img/profile-icon.png";
+      x.avatarurl =
+        "https://yashas.pythonanywhere.com/static/img/profile-icon.png";
       return "https://yashas.pythonanywhere.com/static/img/profile-icon.png";
     }
     let res = await fetch(`https://api.github.com/users/${x.github}`);
     let resj = await res.json();
     x.avatarurl = resj.avatar_url;
-    return res.ok ? resj.avatar_url : "https://yashas.pythonanywhere.com/static/img/profile-icon.png";
+    return res.ok
+      ? resj.avatar_url
+      : "https://yashas.pythonanywhere.com/static/img/profile-icon.png";
   }
 
   onMount(async () => {
@@ -23,22 +25,6 @@
     window.console.log("New Update!");
   });
 </script>
-
-<style>
-  .name {
-    font-size: 30px;
-    font-weight: 600;
-  }
-  .text-muted {
-    font-size: 18px;
-  }
-  .dev-noth {
-    font-size: 17px;
-  }
-  .card {
-    max-width: 11in;
-  }
-</style>
 
 <svelte:head>
   <title>Our Developers</title>
@@ -58,13 +44,15 @@
             src="https://yashas.pythonanywhere.com/static/img/profile-icon.png"
             style="max-width:200px;"
             class="card-img rounded-circle mt-3"
-            alt="..." />
+            alt="..."
+          />
         {:then src}
           <img
             {src}
             style="max-width:200px;"
             class="card-img rounded-circle mt-3"
-            alt="..." />
+            alt="..."
+          />
         {/await}
         <div class="text-center">{dev.career}</div>
       </div>
@@ -77,8 +65,11 @@
             <small class="text-muted">{dev.location}</small>
           </p>
           <a
-            on:click={() => sessionStorage.setItem('devdetail', JSON.stringify(dev))}
-            href="/devDetails" use:link>
+            on:click={() =>
+              sessionStorage.setItem("devdetail", JSON.stringify(dev))}
+            href="/devDetails"
+            use:link
+          >
             <button class="btn btn-info">View Profile</button>
           </a>
         </div>
@@ -93,8 +84,25 @@
       aria-valuenow="100"
       aria-valuemin="0"
       aria-valuemax="100"
-      style="width: 100%" />
+      style="width: 100%"
+    />
   </div>
 {/each}
 
 <div class="mb-5" />
+
+<style>
+  .name {
+    font-size: 30px;
+    font-weight: 600;
+  }
+  .text-muted {
+    font-size: 18px;
+  }
+  .dev-noth {
+    font-size: 17px;
+  }
+  .card {
+    max-width: 11in;
+  }
+</style>

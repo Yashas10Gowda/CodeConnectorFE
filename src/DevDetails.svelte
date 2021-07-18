@@ -1,5 +1,5 @@
 <script>
-  import Nav from './Nav.svelte'
+  import Nav from "./Nav.svelte";
   const devobj = JSON.parse(sessionStorage.getItem("devdetail"));
 
   let devid = devobj.user;
@@ -7,9 +7,9 @@
   let devedus = [];
 
   fetch("https://yashas.pythonanywhere.com/api/experiences/")
-    .then(res => res.json())
-    .then(da => {
-      da.forEach(element => {
+    .then((res) => res.json())
+    .then((da) => {
+      da.forEach((element) => {
         if (element.whose == devid) {
           devexps = [...devexps, element];
         }
@@ -17,33 +17,15 @@
     });
 
   fetch("https://yashas.pythonanywhere.com/api/educations/")
-    .then(res => res.json())
-    .then(da => {
-      da.forEach(element => {
+    .then((res) => res.json())
+    .then((da) => {
+      da.forEach((element) => {
         if (element.whose == devid) {
           devedus = [...devedus, element];
         }
       });
     });
 </script>
-
-<style>
-  .card {
-    max-width: 11in;
-    border-radius: 0px;
-    color: white;
-  }
-  .usr {
-    font-size: 40px;
-    font-weight: 600;
-  }
-  .car {
-    font-size: 20px;
-  }
-  .user {
-    font-size: 25px;
-  }
-</style>
 
 <svelte:head>
   <title>{devobj.username.toUpperCase()}'s Details</title>
@@ -52,13 +34,15 @@
 <Nav />
 
 <div class="card bg-info mx-auto mt-3">
-
   <div class="card-body text-center">
     <img
       style="max-width:300px;"
-      src={devobj.avatarurl ? devobj.avatarurl : 'https://yashas.pythonanywhere.com/static/img/profile-icon.png'}
+      src={devobj.avatarurl
+        ? devobj.avatarurl
+        : "https://yashas.pythonanywhere.com/static/img/profile-icon.png"}
       class="rounded-circle mb-4"
-      alt="" />
+      alt=""
+    />
     <div class="usr text-center">{devobj.username.toUpperCase()}</div>
     <div class="car text-center">{devobj.career}</div>
     <div class="text-center mt-4">{devobj.location}</div>
@@ -68,7 +52,8 @@
           class="btn btn-sm btn-outline-light mb-2"
           target="_blank"
           href={devobj.portfolioweb}
-          role="button">
+          role="button"
+        >
           Web
         </a>
       {/if}
@@ -77,7 +62,8 @@
           class="btn btn-sm btn-outline-light mb-2"
           target="_blank"
           href="https://github.com/{devobj.github}/"
-          role="button">
+          role="button"
+        >
           GitHub
         </a>
       {/if}
@@ -86,7 +72,8 @@
           class="btn btn-sm btn-outline-light mb-2"
           target="_blank"
           href={devobj.linkedinlink}
-          role="button">
+          role="button"
+        >
           LinkedIn
         </a>
       {/if}
@@ -95,7 +82,8 @@
           class="btn btn-sm btn-outline-light mb-2"
           target="_blank"
           href={devobj.tweetlink}
-          role="button">
+          role="button"
+        >
           Twitter
         </a>
       {/if}
@@ -104,7 +92,8 @@
           class="btn btn-sm btn-outline-light mb-2"
           target="_blank"
           href={devobj.fblink}
-          role="button">
+          role="button"
+        >
           Facebook
         </a>
       {/if}
@@ -113,7 +102,8 @@
           class="btn btn-sm btn-outline-light mb-2"
           target="_blank"
           href={devobj.instalink}
-          role="button">
+          role="button"
+        >
           Instagram
         </a>
       {/if}
@@ -122,7 +112,8 @@
           class="btn btn-sm btn-outline-light mb-2"
           target="_blank"
           href={devobj.youtubelink}
-          role="button">
+          role="button"
+        >
           Youtube
         </a>
       {/if}
@@ -136,10 +127,11 @@
     {devobj.bio}
     <hr />
     <div class="user text-info mb-2">Skills</div>
-    {#each devobj.skills.split(',') as skill}
+    {#each devobj.skills.split(",") as skill}
       <span
         style="border-radius:15px;display:inline-block;"
-        class="bg-info center text-light mr-1 px-2 mb-1">
+        class="bg-info center text-light mr-1 px-2 mb-1"
+      >
         {skill.trim()}
       </span>
     {/each}
@@ -202,3 +194,21 @@
 </div>
 
 <div class="my-4" />
+
+<style>
+  .card {
+    max-width: 11in;
+    border-radius: 0px;
+    color: white;
+  }
+  .usr {
+    font-size: 40px;
+    font-weight: 600;
+  }
+  .car {
+    font-size: 20px;
+  }
+  .user {
+    font-size: 25px;
+  }
+</style>
